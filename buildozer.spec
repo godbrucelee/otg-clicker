@@ -6,17 +6,16 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
 
-# 核心套件
 requirements = python3,kivy
 
 orientation = portrait
 fullscreen = 0
 
-# 相容性最穩定的 Android SDK & NDK 設定
+# Android 權限與 SDK/NDK 最佳化設定
 android.permissions = INTERNET, USB_PERMISSION
-android.api = 31
+android.api = 33
 android.minapi = 21
-android.ndk = 23b
+android.ndk = 25b
 android.accept_sdk_license = True
 android.archs = arm64-v8a
 
