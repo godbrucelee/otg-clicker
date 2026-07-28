@@ -26,11 +26,12 @@ jobs:
       - name: Install Buildozer and Cython
         run: |
           pip install --upgrade pip
-          pip install "buildozer==1.5.0" "cython==0.29.33"
+          pip install "buildozer>=1.5.0" "cython<3.0.0"
 
       - name: Build APK with Buildozer
         run: |
-          yes | buildozer -s android debug
+          # 修正重點：使用官方參數自動同意條款，避免 yes 命令破壞管道 (Broken pipe)
+          buildozer -s android debug --accept-sdk-license
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
