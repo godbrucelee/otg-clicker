@@ -8,8 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
       - name: Build with Buildozer
         uses: ArtemSidorov/buildozer-action@v1.2
@@ -18,7 +25,7 @@ jobs:
           subfolder: .
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: otg-clicker-apk
           path: bin/*.apk
